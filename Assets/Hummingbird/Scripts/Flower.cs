@@ -83,4 +83,31 @@ public class Flower : MonoBehaviour
         // Return the amount of nectar that was taken
         return nectarTaken;
     }
+
+    /// <summary>
+    /// Resets the flower
+    /// </summary>
+    public void ResetFlower()
+    {
+        // Refill the nectar
+        NectarAmount = 1f;
+
+        // Enable the flower and nectar colliders
+        flowerCollider.gameObject.SetActive(true);
+        nectarCollider.gameObject.SetActive(true);
+
+        // Change the flower color
+        flowerMaterial.SetColor("_BaseColor", fullFlowerColor);
+    }
+
+    private void Awake()
+    {
+        // Find the flower's mesh renderer and get the material
+        MeshRenderer meshRenderer = GetComponent<MeshRenderer>();
+        flowerMaterial = meshRenderer.material;
+
+        // Find flower and nectar colliders
+        flowerCollider = transform.Find("FlowerCollider").GetComponent<Collider>();
+        nectarCollider = transform.Find("NectarCollider").GetComponent<Collider>();
+    }
 }
