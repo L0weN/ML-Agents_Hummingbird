@@ -6,6 +6,7 @@ TagManager:
   tags:
   - flower_plant
   - nectar
+  - boundary
   layers:
   - Default
   - TransparentFX
